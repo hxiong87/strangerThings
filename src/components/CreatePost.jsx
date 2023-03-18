@@ -32,6 +32,7 @@ export const CreatePost = ({ setPosts }) => {
     
    
     return (
+
         <form onSubmit={(e) => {
             e.preventDefault();
            
