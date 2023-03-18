@@ -27,11 +27,6 @@ export const CreatePost = ({ setPosts }) => {
         setPosts(data);  
         window.location.reload();
 
-       
-
-      
-       
-   
   
     }
     
@@ -42,9 +37,7 @@ export const CreatePost = ({ setPosts }) => {
            
             handleAddPost();
             
-
-               
-          
+ 
            
         }}>
             <h3>Create a New Post</h3>

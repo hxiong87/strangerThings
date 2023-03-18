@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
-//import { registerUser } from "../api";
-// import { setAuthToken } from "../Helper/setAuthToken";
 
-//import { registerUser } from '../api/index'
 
 
 export const Register = () => {
@@ -32,7 +29,7 @@ export const Register = () => {
     console.log("register",result);
     // setToken(result.data.token)
     localStorage.setItem("token", result.data.token)
-    console.log('token reg', result.data.token)
+    // console.log('token reg', result.data.token)
     localStorage.setItem("name:", username)
     localStorage.setItem("pw:", password)
     const newToken = localStorage.getItem('token')

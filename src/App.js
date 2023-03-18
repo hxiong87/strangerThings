@@ -11,12 +11,8 @@ import {
   EditPost,
   SearchPosts,
 
- 
 
   } from './components'
-// import { getPosts, getUserData } from './api';
-// import { MessageForm } from './components/MessageForm';
-// import {MyPosts} from './components/MyPosts';
 
 
 
@@ -66,7 +62,6 @@ function App() {
   return (
     <div className="container">
  
-
     <Navbar /> 
        
     <div className="row">
@@ -75,22 +70,17 @@ function App() {
         <main>
          
         
-          <Routes>
-         {/* <Route
-            path='/profile'
-            element={
-      <SearchPosts  posts={posts} setPosts={setPosts}/>}/> */}
-
-          <Route
-          path='/' 
-          element={<Posts />}/>
+         <Routes>
+             <Route
+             path='/' 
+             element={<Posts />}/>
 
         
 
         
           
          
-          </Routes>
+         </Routes>
      </main>
       </div>
         <aside className="col">
@@ -108,20 +98,14 @@ function App() {
 
             <Route
             path='/'
-            element={    <CreatePost  token={token} setNewPostsAdded={setNewPostsAdded} posts={posts} setPosts={setPosts} />
-          }/>
+            element={    <CreatePost  token={token} setNewPostsAdded={setNewPostsAdded} posts={posts} setPosts={setPosts} /> }/>
           
-           
-       
 
             <Route
             path="/profile"
             element={ <Profile token={token}/>}/>
 
-            {/* <Route
-            path="/profile"
-            element={ <MessageForm token={token} />}/> */}
-           
+       
          </Routes>
     
           </aside>

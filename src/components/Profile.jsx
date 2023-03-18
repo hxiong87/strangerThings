@@ -1,22 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
-
-
 import { getPosts, myData} from '../api';
-// import { CreatePost } from './CreatePost';
 
-
-
-
-
-
- 
- const token = localStorage.getItem('token')
+const token = localStorage.getItem('token')
 
 
 export const Profile = (props) => {
     const [messages, setMessages] = useState([]);
-   const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const username = localStorage.getItem('name:');
     const { fetchPosts, setNewPostsAdded, user, posts } = props;
 
@@ -59,15 +50,7 @@ export const Profile = (props) => {
 
                     
                     })
-                    } 
-
-
-           
-        
-        
-   
-
-             
+                    }    
  
         </div>
     )

@@ -2,7 +2,7 @@ import React from "react";
 import logoicon from  '/Users/leeka/stranger-things-new/src/STRANGER-5.png';
 import { Link , useNavigate } from "react-router-dom";
 
-// import {BrowserRouter, Route, Routes} from 'react-router-dom'
+
 
 
 export const Navbar = () => {
