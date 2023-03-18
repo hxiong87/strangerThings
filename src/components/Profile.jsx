@@ -1,105 +1,79 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom'
 
-import { getPosts, } from '../api';
-import { CreatePost } from './CreatePost';
-import { DeletePost } from './DeletePost';
-import { EditPost } from './EditPost';
-import { MessageForm } from './MessageForm';
+
+import { getPosts, myData} from '../api';
+// import { CreatePost } from './CreatePost';
+
+
 
 
 
 
  
- const newToken = localStorage.getItem('token')
+ const token = localStorage.getItem('token')
 
 
 export const Profile = (props) => {
-    const { newToken, fetchPosts, setNewPostsAdded } = props;
-    const [posts, setPosts]= useState('');
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([]);
+   const token = localStorage.getItem('token');
+    const username = localStorage.getItem('name:');
+    const { fetchPosts, setNewPostsAdded, user, posts } = props;
 
-    
-   
-    
-   console.log('profile getting hit')
-   
-    console.log('this in new token in profile', newToken)
-
-    const getUserData = async () => {
-       try {
-         const resp = await fetch('https://strangers-things.herokuapp.com/api/2211-ftb-et-web-pt/users/me', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${newToken}`
-            }
-        });
-        const data = await resp.json();
-        console.log('profile me data', data)
-
-        console.log('profile me messages', data.data.messages)
-        // return data
-        setMessages(data.data.messages)
-        console.log("data.messages",data.data.messages)
-        
-   
-        // console.log('profile messages getting hit')
-       
-        
-      
-    } catch (err) {
-        console.log("me error", err);
-        // setPosts(data.data.posts);
-      
-
-    }
-
-   
-     
-}
-     
-
-    useEffect (() => {
-        getUserData();   
-    },[newToken] )
-
-   
  
 
+
+
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const userData = await myData()
+            setMessages(userData.data.messages);
+            console.log(userData.data.messages)
+           
+        }
+      
+        fetchUserData();
+    },[])
+   
     return (
         <div>
-        <h1>WELCOME TO YOUR PROFILE</h1>
-        <CreatePost fetchPosts={fetchPosts} newToken={newToken} setNewPostsAdded={setNewPostsAdded} posts={posts} setPosts={setPosts} />
+ 
+          <h1>WELCOME TO YOUR PROFILE {`${username}`}</h1>
+          <br></br>
+          <h3>Messages</h3>
+           {
+             messages.map(message => {
           
-       <p>VIEW SINGLE POST</p>
-       <p>DELETE POST</p>
-       {/* <button >Edit </button> */}
-        <DeletePost newToken={newToken} />
-       <br></br>
-       <p>display user messages/ incoming and outgoing</p>
-      
-        { 
-       
-            messages && messages.map ( message => <div key={posts._id}>
-                <p>Message: {messages.content}</p>
-                </div>)
-        }
-   
-    
-       
-             <MessageForm newToken={newToken} />
+
+
+                    return (
+                            <div key={message._id}>
+                                <p>Post Reference: {message.post.title}</p>
+                                <p>From User: {message.fromUser.username} </p>
+                                <p>Message: {message.content}</p>
+                                <hr></hr>
+                              
+                            </div>
+                    )
+
+                    
+                    })
+                    } 
+
+
+           
         
-      
+        
+   
+
+             
+ 
         </div>
     )
+  
 }
 
 
 
 
-
-  
-    
-
-          
-            

@@ -6,4 +6,7 @@ export { Profile } from './Profile'
 export { CreatePost } from './CreatePost'
 export { EditPost } from './EditPost'
 export { SearchPosts} from './SearchPosts'
-export { MessageForm} from './MessageForm'
+// export { MessageForm} from './MessageForm'
+// export { MyPosts } from './MyPosts'
+
+

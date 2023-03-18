@@ -8,8 +8,7 @@ import { Link , useNavigate } from "react-router-dom";
 export const Navbar = () => {
     const navigate = useNavigate;
     const handleLogout = () => {
-        // setUser({})
-        // setToken('')
+    
         localStorage.clear('token')
         navigate('/')
       }
@@ -24,9 +23,13 @@ export const Navbar = () => {
             <img src={logoicon} alt="Web Logo"/> 
         
             <ul className="nav-items">
+
+          
                 
-                <li><Link to="/login">Log In</Link></li>
+                 <li><Link to="/">Home</Link></li>
+               
                 <li><Link to="/profile">Profile</Link></li>
+                <li><Link to="/login">Log In</Link></li>
                 <li><Link to="/" onClick={handleLogout} className="links">Logout</Link></li>
                 
             </ul>

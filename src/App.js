@@ -9,9 +9,16 @@ import {
   Profile, 
   CreatePost,
   EditPost,
+  SearchPosts,
+
+ 
+
   } from './components'
-import { getPosts } from './api';
-import { MessageForm } from './components/MessageForm';
+// import { getPosts, getUserData } from './api';
+// import { MessageForm } from './components/MessageForm';
+// import {MyPosts} from './components/MyPosts';
+
+
 
 
 function App() {
@@ -19,8 +26,16 @@ function App() {
   // const [token, setToken] = useState('');
   const [posts, setPosts] = useState([]); 
   const [newPostsAdded, setNewPostsAdded] = useState(false);
-  const newToken = localStorage.getItem('token')
+  const newToken = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
+  const [isLoggedIn, setIsLoggedIn] =useState(true);
 
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+        setIsLoggedIn(true);
+    }
+}, []);
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
@@ -31,14 +46,14 @@ function App() {
   // }, []);
 
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+        setIsLoggedIn(true);
+    }
+}, []);
 
-   async function fetchPosts() {
-        const resp = await getPosts(newToken)
-            
-    
-            setPosts(resp.data.posts)
-        }
-       
+
+
        
  
        
@@ -50,47 +65,62 @@ function App() {
 
   return (
     <div className="container">
-  
-       <Navbar /> 
-  
+ 
+
+    <Navbar /> 
+       
     <div className="row">
     
       <div className="column">
         <main>
-          {/* <Routes>
-          <Route
-          path='/'
-          element={   <Posts newToken={newToken} />}/>
+         
         
-          </Routes> */}
-          <Posts newToken={newToken} />
+          <Routes>
+         {/* <Route
+            path='/profile'
+            element={
+      <SearchPosts  posts={posts} setPosts={setPosts}/>}/> */}
+
+          <Route
+          path='/' 
+          element={<Posts />}/>
+
+        
+
+        
           
+         
+          </Routes>
      </main>
       </div>
         <aside className="col">
          
           <Routes>
+        
             <Route
             path='/login'
-            element={ <Login newToken={newToken}/>}/>
+            element={ <Login token={token}/>}/>
 
             <Route
             path='/Register'
             element={ <Register newToken={newToken} />}>
             </Route>
+
+            <Route
+            path='/'
+            element={    <CreatePost  token={token} setNewPostsAdded={setNewPostsAdded} posts={posts} setPosts={setPosts} />
+          }/>
           
            
-            {/* <Route
-            path=''
-            element={  <CreatePost fetchPosts={fetchPosts} newToken={newToken} setNewPostsAdded={setNewPostsAdded} posts={posts} setPosts={setPosts} />}/>
-           */}
-            <Route
-            path="/profile"
-            element={ <Profile newToken={newToken}/>}/>
+       
 
             <Route
             path="/profile"
-            element={ <MessageForm newToken={newToken} />}/>
+            element={ <Profile token={token}/>}/>
+
+            {/* <Route
+            path="/profile"
+            element={ <MessageForm token={token} />}/> */}
            
          </Routes>
     

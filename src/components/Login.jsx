@@ -4,7 +4,7 @@ import { login } from '../api'
 
 
 
-export const Login = () => {
+export const Login = ({ setIsLoggedIn }) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -25,37 +25,7 @@ const handleSubmit = async(e) => {
     }
 
 
-//   const response = await  fetch('https://strangers-things.herokuapp.com/api/2211-ftb-et-web-pt/users/login', {
-//   method: "POST",
-//   headers: {
-//     'Content-Type': 'application/json',
-    
-//   },
-//   body: JSON.stringify({
-//     user: {
-//       username: username,
-//       password: password,
-//     }
-//   })
 
-// });
-// const result = await response.json();
-// console.log("login result", result)
-// console.log("login token", result.data.token)
-// navigate('/profile')
-
-
-
-// }).then(response => response.json())
-//   .then(result => {
-//     // localStorage.setItem("tokenLogin:", result.data.token)
-//     console.log("lofin token", result.data.token)
-      
-
-//     // navigate('/profile')
-  
-//   })
-//   .catch(console.error);
 
 }
 
